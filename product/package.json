@@ -1,0 +1,23 @@
+{
+  "name": "ecomm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "npm start",
+    "start": "nodemon src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RastelliBru/ecomm.git"
+  },
+  "author": "Bruna Raastelli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RastelliBru/ecomm/issues"
+  },
+  "homepage": "https://github.com/RastelliBru/ecomm#readme",
+  "dependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
