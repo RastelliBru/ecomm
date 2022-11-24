@@ -1,6 +1,6 @@
-FROM node:14
+FROM node
 WORKDIR /app
-EXPOSE 3000
-COPY . .
+ADD package.json package-lock.json /app/
 RUN npm install
+ADD ./src /app/
 ENTRYPOINT npm start
