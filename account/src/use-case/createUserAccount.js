@@ -1,5 +1,6 @@
 let contas = [];
-let data = new Date().toLocaleDateString("pt-BR");
+const data = new Date();
+let dataFormatada = data.toISOString().substring(0, 10);
 
 export function createUserUseCase(nome, email, senha) {
   const user = {
@@ -7,7 +8,7 @@ export function createUserUseCase(nome, email, senha) {
     name: nome,
     email: email,
     senha: senha,
-    createdDate: data,
+    createdDate: dataFormatada,
   };
 
   contas.push(user);
