@@ -1,14 +1,13 @@
 let contas = [];
 
-export function createUserUseCase(nome, email, senha) {
-  const data = new Date();
-  let dataFormatada = data.toISOString().substring(0, 10);
+export function createUserUseCase(name, email, password) {
+  const createdDate = new Date().toISOString().substring(0, 10);
   const user = {
     id: contas.length + 1,
-    name: nome,
-    email: email,
-    senha: senha,
-    createdDate: dataFormatada,
+    name,
+    email,
+    password,
+    createdDate,
   };
 
   contas.push(user);
