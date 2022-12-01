@@ -4,13 +4,19 @@
   "main": "createUserAccount.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node test/createUserAccount.test.js"
+    "test": "npm start",
+    "start": "nodemon test/createUserAccount.test.js"
   },
   "author": "Bruna Rastelli",
   "license": "ISC",
   "directories": {
     "test": "test"
   },
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "mongodb": "^4.12.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
 }
