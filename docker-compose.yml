@@ -7,3 +7,16 @@ services:
   account:
     image: pagonxt/account
     build: account
+    volumes:
+      - ./account:/app
+
+  mongodb_accounts:
+    image: mongo
+    container_name: mongodb_accounts
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongouser
+      - MONGO_INITDB_ROOT_PASSWORD=123456789
+      - MONGO_INITDB_DATABASE=accounts
+    ports:
+      - 27017:27017
