@@ -1,4 +1,5 @@
 import { createProductUseCase } from "../../src/use-case/createProductUseCase.js";
+import { produto1, produto2 } from "../../src/repositories/products.js";
 
 export const produto = {
   nome: "the Sims 4",
@@ -21,3 +22,5 @@ export const produto = {
 };
 
 const product = await createProductUseCase(produto);
+const product1 = await createProductUseCase(produto1);
+const product2 = await createProductUseCase(produto2);

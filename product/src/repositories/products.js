@@ -1,5 +1,5 @@
 export const produto1 = {
-  nome: "the Sims 4",
+  nome: "the Sims 3",
   valor: "99",
   quantidade: 1,
   descricao: "description",
@@ -19,7 +19,7 @@ export const produto1 = {
 };
 
 export const produto2 = {
-  nome: "the Sims 3",
+  nome: "the Sims 1",
   valor: 50.55,
   quantidade: 1,
   descricao: "description",
