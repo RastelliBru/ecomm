@@ -3,12 +3,16 @@ services:
   product:
     image: pagonxt/product
     build: product
+    ports:
+      - 3001:3001
 
   account:
     image: pagonxt/account
     build: account
     volumes:
       - ./account:/app
+    ports:
+      - 3000:3000
 
   mongodb_accounts:
     image: mongo
