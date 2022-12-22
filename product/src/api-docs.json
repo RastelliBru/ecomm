@@ -1,0 +1,11 @@
+{
+"openapi": "3.0.0",
+"info": {
+    "title": "API de produtos",
+    "description": "Essa api tem como objetivo listar e cadastrar produtos",
+    "termsOfService": "http://localhost:3002/terms",
+    "contact": {
+        "email": "bruna.rastelli@gmail.com"
+  }
+ }
+}

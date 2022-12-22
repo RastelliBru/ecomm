@@ -6,8 +6,7 @@
   "type": "module",
   "scripts": {
     "start:dev": "nodemon src/main.js",
-    "test": "npm start",
-    "start": "nodemon src/main.js"
+    "test": "npm start"
   },
   "repository": {
     "type": "git",
@@ -20,7 +19,9 @@
   },
   "homepage": "https://github.com/RastelliBru/ecomm#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "swagger-ui-express": "^4.6.0"
   }
 }
