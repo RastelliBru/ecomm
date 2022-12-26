@@ -3,8 +3,10 @@ services:
   product:
     image: pagonxt/product
     build: product
+    volumes:
+      - ./product:/app
     ports:
-      - 3001:3000
+      - 3001:3001
 
   account:
     image: pagonxt/account
