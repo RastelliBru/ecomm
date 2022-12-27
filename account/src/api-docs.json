@@ -30,7 +30,7 @@
             },
             "responses": {
                 "400": {
-                    "description": "Error"
+                    "description": "Error creating account!"
                 },
                 "201": {
                     "description": "Sucess",
@@ -53,9 +53,7 @@
         "Account":{
             "type": "object",
             "properties": {
-                "id":{
-                    "type":"string"
-                },
+                
                 "name": {
                     "type":"string"
                 },
@@ -70,6 +68,9 @@
         "AccountResponse":{
             "type":"object",
             "properties":{
+                "id":{
+                    "type":"string"
+                },
                 "name":{
                     "type":"string"
                 },
