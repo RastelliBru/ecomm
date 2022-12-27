@@ -13,13 +13,6 @@ app.use(express.json());
 
 app.use(router);
 
-
-app.get("/terms", (req, res) => {
-  return res.json ({
-    message: "termos de serviço"
-  })
-})
-
 app.listen(3001, function () {
   console.log("running");
 });

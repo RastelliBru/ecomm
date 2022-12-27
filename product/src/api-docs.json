@@ -10,7 +10,7 @@
     },
     "servers": [
         {
-            "url": "http://localhost:3001/terms",
+            "url": "http://localhost:3001",
             "description": "API de teste"
         }
     ],
@@ -33,7 +33,7 @@
                 },
                 "responses": {
                     "400": {
-                        "description": "Error"
+                        "description": "Error product"
                     },
                     "201": {
                         "description": "Created",
@@ -78,14 +78,17 @@
             "Product": {
                 "type": "object",
                 "properties": {
+                    "usuarioID":{
+                        "type": "string"
+                    },
                     "nome": {
                         "type": "string"
                     },
                     "valor": {
-                        "type": "string"
+                        "type": "number"
                     },
                     "quantidade": {
-                        "type": "string"
+                        "type": "number"
                     },
                     "descricao": {
                         "type": "string"
@@ -96,15 +99,29 @@
                     "caracteristicas": {
                         "type": "array",
                         "items": {
-                            "nome": "string",
-                            "descricao": "string"
+                            "type": "object",
+                            "properties": {
+                              "nome": {
+                                "type":"string"
+                            },
+                             "descricao": {
+                                "type":"string"
+                             }
+                            }
                         }
                     },
                     "imagens": {
                         "type": "array",
                         "items": {
-                            "url": "string",
-                            "descricao": "string"
+                            "type":"object",
+                            "properties":{
+                                "url":{
+                                    "type":"string"
+                                },
+                                "descricao":{
+                                    "type": "string"
+                                }
+                            }
                         }
                     }
                 }
