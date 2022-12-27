@@ -16,11 +16,11 @@
   "description": "",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "express": "^4.18.2",
     "mongodb": "^4.12.1",
     "swagger-ui-express": "^4.6.0"
   },
   "devDependencies": {
-    "express": "^4.18.2",
     "nodemon": "^2.0.20"
   }
 }
