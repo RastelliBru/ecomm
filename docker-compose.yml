@@ -26,3 +26,16 @@ services:
       - MONGO_INITDB_DATABASE=accounts
     ports:
       - 27017:27017
+
+  mysqldb_products:
+    image: mysql
+    container_name: mysqldb_products
+    restart: always
+    environment:
+      MYSQL_DATABASE: product
+      MYSQL_ROOT_USER: root
+      MYSQL_USER: mysqluser
+      MYSQL_ROOT_PASSWORD: mysqlpass
+      MYSQL_PASSWORD: mysqlpass
+    ports:
+      - 3316:3316
