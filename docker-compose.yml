@@ -26,3 +26,14 @@ services:
       - MONGO_INITDB_DATABASE=accounts
     ports:
       - 27017:27017
+
+  postgresql_products:
+    image: postgres
+    container_name: postgresql_products
+    restart: always
+    environment:
+      - POSTGRES_USER=postgresuser
+      - POSTGRES_PASSWORD=postgrespass
+      - POSTGRES_DB=products
+    ports:
+      - 5432:5432
