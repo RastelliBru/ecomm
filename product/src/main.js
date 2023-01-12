@@ -2,7 +2,7 @@ import express from "express";
 import swaggerUi from "swagger-ui-express";
 import { router } from "./router.js";
 import swaggerDocs from "./api-docs.json" assert {type: "json"}
-import sequelize from "../db.js";
+import client from "./repositories/dabaseclient.js"
 
 const app = express();
 
@@ -17,7 +17,7 @@ app.listen(3001, function () {
 });
 
 try {
-  await sequelize.authenticate();
+  await client.authenticate();
   console.log('Connection has been established successfully.');
 } catch (error) {
   console.error('Unable to connect to the database:', error);

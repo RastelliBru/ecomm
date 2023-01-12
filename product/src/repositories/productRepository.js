@@ -1,11 +1,15 @@
-const products = [];
+import Product from '../../models/product.js'
+
 
 export async function saveProduct(produto) {
-  products.push(produto);
-  return produto;
+  const createdProduct = await Product.create(produto)
+  await createdProduct.save()
+  return createdProduct;
 }
 
 export async function findProduct() {
-  const listProducts = products;
-  return listProducts;
+  //const listProducts = Product;
+  return [];
 }
+
+

@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start:dev": "nodemon src/main.js",
-    "start": "node src/main.js"
+    "start": "node src/main.js",
+    "migrate": "npx sequelize-cli db:migrate"
   },
   "repository": {
     "type": "git",
