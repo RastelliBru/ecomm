@@ -8,8 +8,8 @@ export async function saveProduct(produto) {
 }
 
 export async function findProduct() {
-  //const listProducts = Product;
-  return [];
+  const products = await Product.findAll();
+  return products
 }
 
 
