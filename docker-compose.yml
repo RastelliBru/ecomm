@@ -1,6 +1,8 @@
 version: "3"
 services:
   product:
+    depends_on:
+      - mysqldb_products
     image: pagonxt/product
     build: product
     volumes:
@@ -9,6 +11,8 @@ services:
       - 3001:3001
 
   account:
+    depends_on:
+      - mongodb_accounts
     image: pagonxt/account
     build: account
     volumes:
@@ -26,3 +30,14 @@ services:
       - MONGO_INITDB_DATABASE=accounts
     ports:
       - 27017:27017
+  
+  mysqldb_products:
+    image: mysql
+    restart: always
+    environment: 
+      - MYSQL_USER=mysqluser
+      - MYSQL_PASSWORD=mysqlpass
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_DATABASE=products
+    ports:
+      - 3306:3306
