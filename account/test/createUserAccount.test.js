@@ -13,13 +13,12 @@ describe('Account Creation', () => {
                 password: 'examplepass123'
             })
             .expect(201)
-            .expect(body => {
+            .expect(({ body }) => {
                 expect(body).toEqual({
-                    id: '',
                     name: 'Bruna',
                     email: 'bruna@example.com',
-                    createdDate: new Date().toISOString().substring(0, 10)
-                })
+                    date: new Date().toISOString().substring(0, 10),
+                })   
             })
     })
 })

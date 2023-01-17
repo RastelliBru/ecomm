@@ -1,3 +1,4 @@
+import { UUID } from "bson";
 import { saveAccount } from "../../repositories/accountRepository.js";
 
 export async function createUserUseCase(name, email, password) {

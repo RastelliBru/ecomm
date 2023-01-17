@@ -22,7 +22,6 @@ services:
 
   mongodb_accounts:
     image: mongo
-    container_name: mongodb_accounts
     restart: always
     environment:
       - MONGO_INITDB_ROOT_USERNAME=mongouser
