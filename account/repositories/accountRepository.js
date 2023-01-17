@@ -12,4 +12,5 @@ async function getUsersCollection() {
 export async function saveAccount(account) {
   const collection = await getUsersCollection();
   await collection.insertOne(account);
+  //await connection.close();
 }
