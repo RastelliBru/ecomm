@@ -4,12 +4,13 @@ import bcrypt from "bcryptjs";
 
 export const router = Router();
 
-router.post("/account", function (req, res) {
+router.post("/account", async (req, res) => {
   const { name, email, password } = req.body;
   const encodedPassword = bcrypt.hashSync(password, 10);
-  createUserUseCase(name, email, encodedPassword)
+  const user = await createUserUseCase(name, email, encodedPassword)
     .then((user) => {
       const userCreated = {
+        id: user.id,
         name: user.name,
         email: user.email,
         date: user.createdDate,
