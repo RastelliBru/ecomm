@@ -8,6 +8,7 @@
     "start:dev": "env-cmd nodemon src/main.js",
     "start": "node src/main.js",
     "migrate": "npx sequelize-cli db:migrate",
+    "migrate:test": "npm run migrate -- --env test",
     "migrate:undo": "npx sequelize-cli db:migrate:undo",
     "test": "env-cmd -f .env.test node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles"
   },
