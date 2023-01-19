@@ -2,7 +2,7 @@ import { Router } from "express";
 import { createUserUseCase } from "./use-case/createUserAccount.js";
 import bcrypt from "bcryptjs";
 
-export const router = Router();
+const router = Router();
 
 router.post("/account", async (req, res) => {
   const { name, email, password } = req.body;
@@ -21,3 +21,5 @@ router.post("/account", async (req, res) => {
       res.status(400).json({ status: "erro", message: e.message });
     });
 });
+
+export {router}

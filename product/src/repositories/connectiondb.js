@@ -1,5 +1,9 @@
 import { Sequelize } from 'sequelize'
+import * as dotenv from 'dotenv'
+import express from 'express'
 
-const client = new Sequelize('mysql://mysqluser:mysqlpass@mysqldb_products/products')
+dotenv.config()
+
+const client = new Sequelize(process.env.DATABASE_URL)
 
 export default client

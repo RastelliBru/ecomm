@@ -2,7 +2,7 @@ import { Router } from "express";
 import { createProductUseCase } from "./use-case/createProductUseCase.js";
 import { listProducts } from "./use-case/listProduct.js";
 
-export const router = Router();
+const router = Router();
 
 router.get("/product", (req, res) => {
   listProducts()
@@ -26,3 +26,5 @@ router.post("/product", function (req, res) {
       res.status(400).json({ status: "error", message: error.message });
     });
 });
+
+export default router

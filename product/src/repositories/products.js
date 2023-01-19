@@ -1,19 +1,22 @@
+import { DataTypes } from "sequelize";
+
 export const produto1 = {
-  nome: "the Sims 3",
-  valor: "99",
-  quantidade: 1,
-  descricao: "description",
-  categoria: "games",
-  caracteristicas: [
+  id_user: DataTypes.UUID,
+  name: "the Sims 3",
+  value: "99",
+  quantity: 1,
+  description: "description",
+  category: "games",
+  features: [
     {
-      nome: "jogo",
-      descricao: "jogo de simulação",
+      name: "jogo",
+      description: "jogo de simulação",
     },
   ],
-  imagens: [
+  images: [
     {
       url: "image.png",
-      descricaoImagem: "imagem de jogo",
+      description: "imagem de jogo",
     },
   ],
 };
