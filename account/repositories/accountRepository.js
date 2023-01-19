@@ -1,9 +1,11 @@
 import { MongoClient } from "mongodb";
+import * as dotenv from 'dotenv'
 
+dotenv.config()
 
-const client = new MongoClient("mongodb://mongouser:123456789@localhost:27017");
+const client = new MongoClient(process.env.DATABASE_URL);
 
-async function getUsersCollection(client) {
+export async function getUsersCollection(client) {
   const database = client.db("accounts");
   const usersCollection = database.collection('users')
   return usersCollection;
@@ -16,3 +18,5 @@ export async function saveAccount(account) {
   setTimeout(() => {client.close()}, 1500)
   await client.close();
 }
+
+export {client}
