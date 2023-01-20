@@ -1,8 +1,15 @@
 import request from 'supertest';
 import app from '../../src/app.js';
+import { findProduct } from '../../src/repositories/productRepository.js';
 import { produto1 } from '../../src/repositories/products.js';
+import { cleanProductTable } from './helpers/products.js';
 
 describe('Product Creation', () => {
+
+    afterEach(async () => {
+        await cleanProductTable();
+    });
+
     it('should create a product given required product data', async () => {
         await request(app)
             .post('/product')
@@ -19,7 +26,7 @@ describe('Product Creation', () => {
                         ...feature
                     })),
                     images: produto1.images.map(image => ({
-                        ...image
+                        ...image 
                     }))
                 });
             });
