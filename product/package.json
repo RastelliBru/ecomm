@@ -8,7 +8,7 @@
     "verbose": true
   },
   "scripts": {
-    "start:dev": "env-cmd nodemon src/main.js",
+    "start:dev": "env-cmd nodemon --ext js,json,yaml src/main.js",
     "start": "node src/main.js",
     "migrate": "npx sequelize-cli db:migrate",
     "migrate:test": "npm run migrate -- --env test",
@@ -30,7 +30,8 @@
     "express": "^4.18.2",
     "mysql2": "^3.0.0",
     "nodemon": "^2.0.20",
-    "swagger-ui-express": "^4.6.0"
+    "swagger-ui-express": "^4.6.0",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "@babel/plugin-syntax-import-meta": "^7.10.4",

@@ -1,0 +1,82 @@
+openapi: 3.0.3
+info:
+  title: API de Product
+  description: Esta API tem como objetivo manipular informações de produtos.
+  contact:
+    email: bruna.rastelli@gmail.com
+  version: 1.0.0
+servers:
+- url: http://localhost:3001
+  description: API de teste
+paths:
+  "/products":
+    post:
+      tags:
+      - Product
+      summary: Cadastro de produtos
+      description: Essa rota será responsável por cadastrar um novo produto
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Product"
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                "$ref": "#/components/schemas/Product"
+        '400':
+          description: Error product
+    get:
+      tags:
+      - Product
+      summary: lista de produtos cadastrados
+      description: Essa rota será responsável por listar os produtos cadastrados
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                "$ref": "#/components/schemas/Product"
+        '500':
+          description: Error
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        usuarioID:
+          type: string
+        nome:
+          type: string
+        valor:
+          type: number
+        quantidade:
+          type: number
+        descricao:
+          type: string
+        categoria:
+          type: string
+        caracteristicas:
+          type: array
+          items:
+            type: object
+            properties:
+              nome:
+                type: string
+              descricao:
+                type: string
+        imagens:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+              descricao:
+                type: string

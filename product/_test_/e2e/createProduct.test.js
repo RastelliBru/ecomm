@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { app } from '../../src/main.js';
+import app from '../../src/app.js';
 import { produto1 } from '../../src/repositories/products.js';
 
 describe('Product Creation', () => {
@@ -13,17 +13,13 @@ describe('Product Creation', () => {
             .expect(({ body}) => {
                 expect(body).toEqual({
                     ...produto1,
-                    createdAt: expect.any(String),
-                    updatedAt: expect.any(String),
+                    createdDate: expect.any(String),
+                    productId: expect.any(String),
                     features: produto1.features.map(feature => ({
-                        ...feature,
-                        createdAt: expect.any(String),
-                        updatedAt: expect.any(String),
+                        ...feature
                     })),
                     images: produto1.images.map(image => ({
-                        ...image,
-                        createdAt: expect.any(String),
-                        updatedAt: expect.any(String),
+                        ...image
                     }))
                 });
             });
