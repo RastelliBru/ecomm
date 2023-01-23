@@ -7,7 +7,7 @@ const router = Router();
 router.post("/account", async (req, res) => {
   const { name, email, password } = req.body;
   const encodedPassword = bcrypt.hashSync(password, 10);
-  const user = createUserUseCase(name, email, encodedPassword)
+  createUserUseCase(name, email, encodedPassword)
     .then((user) => {
       const userCreated = {
         id: user.id,
