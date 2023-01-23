@@ -15,7 +15,6 @@ export async function saveAccount(account) {
   await client.connect();
   const usersCollection = await getUsersCollection(client);
   await usersCollection.insertOne(account);
-  setTimeout(() => {client.close()}, 1500)
   await client.close();
 }
 

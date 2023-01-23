@@ -4,7 +4,6 @@ import { app } from "./app.js";
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(apiDocs))
 
-//app.use("/accountsV1", router)
 
 app.listen(3000, function () {
   console.log("running");

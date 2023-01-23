@@ -1,6 +1,5 @@
 import request from 'supertest';
 import app from '../../src/app.js';
-import { findProduct } from '../../src/repositories/productRepository.js';
 import { produto1 } from '../../src/repositories/products.js';
 import { cleanProductTable } from './helpers/products.js';
 
