@@ -1,13 +1,12 @@
 import { Router } from "express";
 import { createUserUseCase } from "./use-case/createUserAccount.js";
-import bcrypt from "bcryptjs";
+import { createUserTokenUseCase } from "./use-case/createUserToken.js";
 
 const router = Router();
 
 router.post("/account", async (req, res) => {
   const { name, email, password } = req.body;
-  const encodedPassword = bcrypt.hashSync(password, 10);
-  createUserUseCase(name, email, encodedPassword)
+  createUserUseCase(name, email, password)
     .then((user) => {
       const userCreated = {
         id: user.id,
@@ -21,5 +20,20 @@ router.post("/account", async (req, res) => {
       res.status(400).json({ status: "erro", message: e.message });
     });
 });
+
+router.post('/token', async (req, res) => {
+    const {email, password} = req.body;
+    const token = await createUserTokenUseCase(email, password); 
+
+    if(!token){
+      return res.status(401).json({
+        message: 'Email, user or password incorrect',
+      })
+    }
+    
+    return res.status(201).json({
+      token,
+    })
+})
 
 export {router}
