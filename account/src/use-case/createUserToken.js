@@ -11,8 +11,8 @@ export async function createUserTokenUseCase(email, password) {
 
     const passwordCheck = await comparePassword(password, possibleUser.password);
 
-    if(passwordCheck) {
-        return generateToken(possibleUser.id);
+    if(!passwordCheck) {
+        return null;
     }
-    return null;
+    return generateToken(possibleUser.id);
 }

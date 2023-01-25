@@ -5,6 +5,7 @@ services:
       - mysqldb_products
     image: pagonxt/product
     build: product
+    entrypoint: 'npm run start:dev'
     volumes:
       - ./product:/app
     ports:
@@ -15,6 +16,7 @@ services:
       - mongodb_accounts
     image: pagonxt/account
     build: account
+    entrypoint: 'npm run start:dev'
     volumes:
       - ./account:/app
     ports:
