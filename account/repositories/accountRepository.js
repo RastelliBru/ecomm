@@ -15,15 +15,26 @@ export async function saveAccount(account) {
   await client.connect();
   const usersCollection = await getUsersCollection(client);
   await usersCollection.insertOne(account);
-  await client.close();
 }
 
 export async function findUserByEmail(email) {
-  await client.connect();
   const usersCollection = await getUsersCollection(client);
   const user = await usersCollection.findOne({ email });
-  await client.close();
   return user;
+}
+
+export async function findAccountByEmail(email) {
+  const collection = await getUsersCollection(client);
+  const account = collection.findOne({ email });
+
+  return account;
+}
+
+
+export async function existsAccountByEmail(email) {
+    const account = await findAccountByEmail(email);
+
+    return account !== null;
 }
 
 export {client}
