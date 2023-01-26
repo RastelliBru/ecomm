@@ -4,7 +4,6 @@ import { app } from "./app.js";
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(apiDocs))
 
-
-app.listen(3000, function () {
+app.listen(process.env.PORT, function () {
   console.log("running");
 });
