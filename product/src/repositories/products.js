@@ -1,7 +1,6 @@
 import { randomUUID } from 'crypto'
 
 export const produto1 = {
-  id_user: randomUUID(),
   name: "the Sims 3",
   value: "99",
   quantity: "1",

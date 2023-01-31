@@ -14,9 +14,9 @@ export async function createUserUseCase(name, email, password) {
 
   const createdDate = new Date().toISOString().substring(0, 10);
   const hashedPassword = bcrypt.hashSync(password, parseInt(process.env.HASH_SALT));
-  const id = crypto.randomUUID();
+  const id_user = crypto.randomUUID();
   const user = {
-    id,
+    id_user,
     name,
     email,
     password: hashedPassword,
