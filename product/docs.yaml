@@ -1,82 +1,154 @@
 openapi: 3.0.3
 info:
-  title: API de Product
+  title: Restful API that deals with Products
   description: Esta API tem como objetivo manipular informações de produtos.
   contact:
     email: bruna.rastelli@gmail.com
-  version: 1.0.0
+  version: 2.0.0
 servers:
 - url: http://localhost:3001
   description: API de teste
 paths:
   "/products":
+    summary: Creates a product
+    description: 'Given a provide product data, creates a product in the database'
     post:
-      tags:
-      - Product
-      summary: Cadastro de produtos
-      description: Essa rota será responsável por cadastrar um novo produto
+      security:
+        - bearerAuth: []
       requestBody:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/Product"
+              $ref: '#/components/schemas/CreateProductRequest'
       responses:
-        '201':
-          description: Created
+        201:
+          description: Product created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+        400:
+          description: Product does not created
           content:
             application/json:
               schema:
                 type: object
-                "$ref": "#/components/schemas/Product"
-        '400':
-          description: Error product
+                properties:
+                  message:
+                    type: string
+        403:
+          description: Forbidden to create a product
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
     get:
-      tags:
-      - Product
-      summary: lista de produtos cadastrados
-      description: Essa rota será responsável por listar os produtos cadastrados
       responses:
-        '200':
-          description: success
+        200:
+          description: Product created
           content:
             application/json:
               schema:
-                type: object
-                "$ref": "#/components/schemas/Product"
-        '500':
-          description: Error
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductResponse'
 components:
+  securitySchemes:
+    bearerAuth: 
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
-    Product:
+    ImageResponse:
       type: object
       properties:
-        usuarioID:
+        id: 
+          type: integer
+        url:
           type: string
-        nome:
+        description:
           type: string
-        valor:
+        createdDate:
+          type: string
+        updatedDate:
+          type: string
+    FeatureResponse:
+      type: object
+      properties:
+        id: 
+          type: integer 
+        name:
+          type: string
+        description:
+          type: string
+        createdDate:
+          type: string
+        updatedDate:
+          type: string
+    ProductResponse:
+      type: object
+      properties:
+        id: 
+          type: integer
+        id_user: 
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        quantity:
+          type: integer
+        value:
           type: number
-        quantidade:
-          type: number
-        descricao:
+        createdDate:
           type: string
-        categoria:
+        updatedDate:
           type: string
-        caracteristicas:
+        features:
           type: array
           items:
-            type: object
-            properties:
-              nome:
-                type: string
-              descricao:
-                type: string
-        imagens:
+            $ref: '#/components/schemas/FeatureResponse'
+        images:
           type: array
           items:
-            type: object
-            properties:
-              url:
-                type: string
-              descricao:
-                type: string
+            $ref: '#/components/schemas/ImageResponse'
+    CreateProductRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        quantity:
+          type: integer
+        value:
+          type: number
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateFeatureRequest'
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateImageRequest'
+    CreateImageRequest:
+      type: object
+      properties:
+        url:
+          type: string
+        description:
+          type: string
+    CreateFeatureRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
