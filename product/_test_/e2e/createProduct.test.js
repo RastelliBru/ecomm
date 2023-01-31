@@ -43,4 +43,47 @@ describe('Product Creation', () => {
                 });
             });
     });
+    it('should not create a product when authorization info is not provided', async () => {
+        await request(app)
+            .post('/product')
+            .set('Content-Type', 'application/json')
+            .set('Accept', 'application/json')
+            .send(produto1)
+            .expect(401)
+            .expect(({ body}) => {
+                expect(body).toEqual({ message:'Authentication required'})     
+                
+            });
+
+    
+    });
+
+    it('should not create a product when authorization info is malformed', async () => {
+        await request(app)
+            .post('/product')
+            .set('Content-Type', 'application/json')
+            .set('Accept', 'application/json')
+            .set('Authorization', 'header-error')
+            .send(produto1)
+            .expect(400)
+            .expect(({ body}) => {
+                expect(body).toEqual({ message:'authorization header unexpected'})     
+                
+            });
+    });
+
+    it('should not create a product when authorization info was modified', async () => {
+        const modifiedToken = generateToken('id-user') + 'a';
+        await request(app)
+            .post('/product')
+            .set('Content-Type', 'application/json')
+            .set('Accept', 'application/json')
+            .set('Authorization', `Bearer ${modifiedToken}`)
+            .send(produto1)
+            .expect(403)
+            .expect(({ body}) => {
+                expect(body).toEqual({ message:'Forbidden'})     
+                
+            });
+    });
 });
