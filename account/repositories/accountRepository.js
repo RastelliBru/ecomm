@@ -30,11 +30,4 @@ export async function findAccountByEmail(email) {
   return account;
 }
 
-
-export async function existsAccountByEmail(email) {
-    const account = await findAccountByEmail(email);
-
-    return !!account;
-}
-
 export {client}
