@@ -34,7 +34,7 @@ export async function findAccountByEmail(email) {
 export async function existsAccountByEmail(email) {
     const account = await findAccountByEmail(email);
 
-    return account !== null;
+    return !!account;
 }
 
 export {client}
