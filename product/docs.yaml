@@ -1,15 +1,15 @@
 openapi: 3.0.3
 info:
-  title: Restful API that deals with Products
-  description: Esta API tem como objetivo manipular informações de produtos.
+  version: 2.0.0
+  title: Products API
+  description: Restful API that deals with Products
   contact:
     email: bruna.rastelli@gmail.com
-  version: 2.0.0
 servers:
 - url: http://localhost:3001
-  description: API de teste
+  description: Server Product
 paths:
-  "/products":
+  /product:
     summary: Creates a product
     description: 'Given a provide product data, creates a product in the database'
     post:
