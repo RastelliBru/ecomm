@@ -1,9 +1,15 @@
 import crypto from 'crypto'
-import { findAccountByEmail, saveAccount } from "../../repositories/accountRepository.js";
+import { emailValidate, findAccountByEmail, saveAccount } from "../../repositories/accountRepository.js";
 import bcrypt from 'bcryptjs'
 
 
 export async function createUserUseCase(name, email, password) {
+
+  const validEmail = await emailValidate(email);
+  if(!validEmail) {
+    console.error('Invalid email', email);
+    throw new Error('Invalid email');
+}
 
   const accountAlreadyExists = await findAccountByEmail(email);
     

@@ -28,4 +28,10 @@ export async function findAccountByEmail(email) {
   return account;
 }
 
+export async function emailValidate(email){
+  const user = await getUsersCollection(client);
+  const emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i
+  return emailRegex.test(email)
+}
+
 export {client}
