@@ -5,7 +5,7 @@ import { listProducts } from "./use-case/listProduct.js";
 
 const router = Router();
 
-router.get("/product", (req, res) => {
+router.get("/products", (req, res) => {
   listProducts()
     .then((data) => {
       res.status(200).json(data);
@@ -17,7 +17,7 @@ router.get("/product", (req, res) => {
     });
 });
 
-router.post("/product", function (req, res) {
+router.post("/products", function (req, res) {
   const authorozationHeader = req.headers.authorization;
   if(!authorozationHeader) {
     return res.status(401).json({message: 'Authentication required'})

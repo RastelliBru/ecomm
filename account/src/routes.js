@@ -9,7 +9,7 @@ router.post("/account", async (req, res) => {
   createUserUseCase(name, email, password)
     .then((user) => {
       const userCreated = {
-        id: user.id,
+        id_user: user.id,
         name: user.name,
         email: user.email,
         date: user.createdDate,

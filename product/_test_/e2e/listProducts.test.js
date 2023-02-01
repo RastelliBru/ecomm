@@ -19,13 +19,14 @@ describe('Product list', () => {
     })
 
     it('Should return a list of products', async () => {
-        await saveProduct(produto1)
+        await saveProduct({...produto1, id_user: 'id-user'});
         await request(app)
         .get('/product')
         .expect(200)
         .expect(({body}) => {
             expect(body).toEqual([{
                 ...produto1,
+                id_user: "id-user",
                 id: expect.any(Number),
                 createdAt: expect.any(String),
                 updatedAt: expect.any(String),
