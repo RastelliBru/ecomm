@@ -25,7 +25,6 @@ export async function findUserByEmail(email) {
 export async function findAccountByEmail(email) {
   const collection = await getUsersCollection(client);
   const account = collection.findOne({ email });
-
   return account;
 }
 
