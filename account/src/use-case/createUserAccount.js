@@ -5,11 +5,6 @@ import bcrypt from 'bcryptjs'
 
 export async function createUserUseCase(name, email, password) {
 
-  function emailValidate(email) {
-    //const emailRegex =  /^([a-zA-Z][^<>\"!@[\]#$%¨&*()~^:;ç,\-´`=+{}º\|/\\?]{1,})@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    //return emailRegex.test(String(email).toLowerCase())
-  }
-
   const accountAlreadyExists = await findAccountByEmail(email);
     
     if(!!accountAlreadyExists) {
