@@ -1,7 +1,4 @@
 import { MongoClient } from "mongodb";
-import * as dotenv from 'dotenv'
-
-dotenv.config()
 
 const client = new MongoClient(process.env.DATABASE_URL);
 
@@ -15,9 +12,11 @@ export async function saveAccount(account) {
   await client.connect();
   const usersCollection = await getUsersCollection(client);
   await usersCollection.insertOne(account);
+  await client.close();
 }
 
 export async function findUserByEmail(email) {
+  await client.connect();
   const usersCollection = await getUsersCollection(client);
   const user = await usersCollection.findOne({ email });
   return user;
