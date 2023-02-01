@@ -23,15 +23,24 @@ export async function findUserByEmail(email) {
 }
 
 export async function findAccountByEmail(email) {
+  await client.connect();
   const collection = await getUsersCollection(client);
   const account = collection.findOne({ email });
   return account;
 }
 
 export async function emailValidate(email){
-  const user = await getUsersCollection(client);
+  await client.connect();
   const emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i
   return emailRegex.test(email)
 }
+
+export async function passwordValidate(password){
+  await client.connect()
+  const passwordRegex = /^[0-9a-zA-Z$*&@#]{8,}$/;
+   return passwordRegex.test(password)   
+}
+
+
 
 export {client}

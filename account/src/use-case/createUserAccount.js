@@ -1,5 +1,5 @@
 import crypto from 'crypto'
-import { emailValidate, findAccountByEmail, saveAccount } from "../../repositories/accountRepository.js";
+import { emailValidate, findAccountByEmail, passwordValidate, saveAccount } from "../../repositories/accountRepository.js";
 import bcrypt from 'bcryptjs'
 
 
@@ -9,6 +9,12 @@ export async function createUserUseCase(name, email, password) {
   if(!validEmail) {
     console.error('Invalid email', email);
     throw new Error('Invalid email');
+}
+
+  const validPassword = await passwordValidate(password);
+  if(!validPassword) {
+   console.error('Invalid password, must contains at least 8 characters', password);
+  throw new Error('Invalid password, must contains at least 8 characters');
 }
 
   const accountAlreadyExists = await findAccountByEmail(email);
