@@ -20,6 +20,7 @@ export async function findUserByEmail(email) {
   await client.connect();
   const usersCollection = await getUsersCollection(client);
   const user = await usersCollection.findOne({ email });
+  await client.close();
   return user;
 
 }
@@ -28,6 +29,7 @@ export async function findAccountByEmail(email) {
   await client.connect();
   const collection = await getUsersCollection(client);
   const account = collection.findOne({ email });
+  await client.close();
   return account;
 }
 
