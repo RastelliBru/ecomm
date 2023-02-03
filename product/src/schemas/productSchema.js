@@ -1,6 +1,9 @@
 import Joi from '@hapi/joi';
 
-const productValidate = Joi.object({
+const validator = (schema) => (payload) =>
+    schema.validate(payload, {abortEarly: false})
+
+const productSchema = Joi.object({
     name: Joi.string().min(3).required(),
     value: Joi.number().min(1),
     quantity: Joi.number().min(1),
@@ -8,4 +11,6 @@ const productValidate = Joi.object({
     category: Joi.string().required(),
 })
 
-export default productValidate 
+const productValidate = validator(productSchema)
+
+export default productValidate

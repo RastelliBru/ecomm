@@ -20,11 +20,11 @@ router.get("/products", (req, res) => {
 
 router.post("/products", function (req, res) {
 
-  const {error, value} = productValidate.validate(req.body)
+  const {error, value} = productValidate(req.body);
 
   if (error){
     console.log(error)
-    return res.send('Invalid request')
+    return res.send(error.details)
   }
 
   const authorozationHeader = req.headers.authorization;
