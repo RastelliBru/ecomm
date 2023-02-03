@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { decriptToken } from "./helpers/token.js";
+import productValidate from "./schemas/productSchema.js";
 import { createProductUseCase } from "./use-case/createProductUseCase.js";
 import { listProducts } from "./use-case/listProduct.js";
 
@@ -18,6 +19,14 @@ router.get("/products", (req, res) => {
 });
 
 router.post("/products", function (req, res) {
+
+  const {error, value} = productValidate.validate(req.body)
+
+  if (error){
+    console.log(error)
+    return res.send('Invalid request')
+  }
+
   const authorozationHeader = req.headers.authorization;
   if(!authorozationHeader) {
     return res.status(401).json({message: 'Authentication required'})

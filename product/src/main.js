@@ -12,7 +12,7 @@ app.listen(process.env.PORT, function () {
   client.authenticate().then(() => {
     console.log('DB Connected')
   }).catch((e) => {
-    console.log('DB does not connected', e)
+    console.log('DB did not connect', e)
   }) 
 });
 

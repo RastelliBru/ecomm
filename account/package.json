@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "env-cmd nodemon src/main.js",
     "test": "env-cmd -f .env.test node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles",
-    "start": "node src/main.js"
+    "start": "env-cmd node src/main.js"
   },
   "author": "Bruna Rastelli",
   "license": "ISC",
