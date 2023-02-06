@@ -1,11 +1,12 @@
 import { Router } from "express";
 import { decriptToken } from "./helpers/token.js";
+import productValidate from "./schemas/productSchema.js";
 import { createProductUseCase } from "./use-case/createProductUseCase.js";
 import { listProducts } from "./use-case/listProduct.js";
 
 const router = Router();
 
-router.get("/product", (req, res) => {
+router.get("/products", (req, res) => {
   listProducts()
     .then((data) => {
       res.status(200).json(data);
@@ -17,7 +18,15 @@ router.get("/product", (req, res) => {
     });
 });
 
-router.post("/product", function (req, res) {
+router.post("/products", function (req, res) {
+
+  const {error, value} = productValidate(req.body);
+
+  if (error){
+    console.log(error)
+    return res.send(error.details)
+  }
+
   const authorozationHeader = req.headers.authorization;
   if(!authorozationHeader) {
     return res.status(401).json({message: 'Authentication required'})

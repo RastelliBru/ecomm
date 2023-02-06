@@ -25,21 +25,14 @@ services:
   mongodb_accounts:
     image: mongo
     restart: always
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=mongouser
-      - MONGO_INITDB_ROOT_PASSWORD=123456789
-      - MONGO_INITDB_DATABASE=accounts
+    env_file: mongo.env
+
     ports:
       - 27017:27017
   
   mysqldb_products:
     image: mysql
     restart: always
-    environment: 
-      - MYSQL_ROOT_PASSWORD=pass
-      - MYSQL_USER=mysqluser
-      - MYSQL_PASSWORD=mysqlpass
-      - MYSQL_ALLOW_EMPTY_PASSWORD=true
-      - MYSQL_DATABASE=products
+    env_file: mysql.env
     ports:
       - 3306:3306

@@ -1,13 +1,10 @@
 import { MongoClient } from "mongodb";
-import * as dotenv from 'dotenv'
-
-dotenv.config()
 
 const client = new MongoClient(process.env.DATABASE_URL);
 
 export async function getUsersCollection(client) {
-  const database = client.db("accounts");
-  const usersCollection = database.collection('users')
+  const database = client.db(process.env.MONGO_INITDB_DATABASE);
+  const usersCollection = database.collection(process.env.DB_COLLECTION)
   return usersCollection;
 }
 
@@ -16,6 +13,7 @@ export async function saveAccount(account) {
   const usersCollection = await getUsersCollection(client);
   await usersCollection.insertOne(account);
   await client.close();
+
 }
 
 export async function findUserByEmail(email) {
@@ -24,6 +22,26 @@ export async function findUserByEmail(email) {
   const user = await usersCollection.findOne({ email });
   await client.close();
   return user;
+
+}
+
+export async function findAccountByEmail(email) {
+  await client.connect();
+  const collection = await getUsersCollection(client);
+  const account = collection.findOne({ email });
+  await client.close();
+  return account;
+}
+
+export async function emailValidate(email){
+  const emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i
+  return emailRegex.test(email)
+  
+}
+
+export async function passwordValidate(password){
+  const passwordRegex = /^[0-9a-zA-Z$*&@#]{8,}$/;
+  return passwordRegex.test(password)   
 }
 
 export {client}
